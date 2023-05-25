@@ -1,3 +1,40 @@
-<input type="text" placeholder="Enter username" [(ngModel)]="username">
-<p>{{ username }}</p>
-<button [disabled]="isEmpty()" (click)="resetUsername()">Reset Username</button>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <button type="button" class="btn btn-primary" (click)="onPasswordToggle()">Display Details</button>
+            <p *ngIf="togglePassword">Secret password = {{ password }}</p>
+            <input *ngIf="togglePassword" class="form-control" type="text" placeholder="Enter password" [(ngModel)]="password">
+        </div>
+        <div class="col-sm">
+            <h3 *ngFor="let pl of pushLogs; let i = index" 
+                [ngClass]="i > 5 ? getClass() : ''"
+                [ngStyle]="{ 'background-color' : i > 5 ? 'blue' : '' }">
+                Log {{ i }} - {{ pl.getHours() }}:{{ pl.getMinutes() }}:{{ pl.getSeconds() }}
+            </h3>
+        </div>
+        <div class="col-sm">
+            <h1>Logs Count = {{ this.pushLogs.length }}</h1>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <input class="form-control" type="text" placeholder="Enter username" [(ngModel)]="username">
+            <p>{{ username }}</p>
+            <button type="button" class="btn btn-danger" [disabled]="isEmpty()" (click)="resetUsername()">Reset Username</button>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{ keyCode }} <span class="badge bg-secondary">Key</span></h1>
+            <a class="link-info" href="https://github.com/sfdeloach/learn-angular" target="_blank">Solution-Repo</a>
+            <br/>
+            <a class="link-info" href="https://getbootstrap.com/docs/5.0/getting-started/introduction/" target="_blank">Bootstrap v5 Docs</a>
+        </div>
+    </div>
+</div>
